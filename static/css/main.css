@@ -1,0 +1,9 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(0, 0, 0, 0.644);
+    font-size: large;
+}
+body form #info-form p{
+    color:red;
+    font-weight: bold;
+}

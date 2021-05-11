@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Home</title>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">COVID-19 Graph Creator</h1>
+        <br>
+        <p class="lead">It's simple, select the data you want to vizuallize and press the button below.</p>
+        <p class="lead">Got some info you'd like to graph? <a href="https://glopezzz.webflow.io/contact">Contact me</a> and let's see what we can do.</p>
+    </div>
+    <br>
+    <h2>Medical information</h2>
+    <br>
+    <div class="blog-post">
+        <p>Medical information consists in COVID-19 confirmed cases, deaths and recoveries. I made it possible to obtain the information as Total cases or cases Per Capita, 
+            and also as accumulated cases or daily new cases.
+        </p>
+        <p>The source of such information is obtained from official sources in real time. 
+            You can access such information <a href="https://covid19tracking.narrativa.com/es/spain/api.html">here.</a></p>
+    </div>
+    <br>
+    <form action="/" method="post">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="data"><b>Information to graph</b></label>
+                <select class="custom-select d-block w-100" id="info_type" name="info_type" required>
+                    <option value="">Choose...</option>
+                    <option value="confirmed">Confirmed Cases</option>
+                    <option value="deaths">Deaths</option>
+                    <option value="recovered">Recovered</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="data"><b>Ordered by</b></label>
+                <select class="custom-select d-block w-100" id="order" name="order" required>
+                    <option value="">Choose...</option>
+                    <option value="total">Total cases</option>
+                    <option value="per habitant">Per Capita</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="data"><b>Data type</b></label>
+                <select class="custom-select d-block w-100" id="study_type" name="study_type" required>
+                    <option value="">Choose...</option>
+                    <option value="accumulated">Accumulated cases</option>
+                    <option value="new">Daily new cases</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="countries"><b>Number of countries</b></label>
+                <input type="number" class="form-control" id=name_countries name="n_countries" min='3' max='12' required>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit"> Show Graph </button>
+    </form>
+</div>
+<br>
+<hr style="width : 75%;
+           size : 20;
+           color:#000000"/>
+<div class="container">
+    <h2> Tests done per country </h2>
+    <br>
+    <form action="/" method="post">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="countries"> Number of countries </label>
+                <input type="number" class="form-control" id=name_countries_tests name="n_countries_tests" min='5' max='50' required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="data">Ordered by:</label>
+                <select class="custom-select d-block w-100" id="order_tests" name="order_tests" required>
+                    <option value="">Choose...</option>
+                    <option value="total">Total tests</option>
+                    <option value="per habitant">Per Capita</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit"> Show Graph </button>
+    </form>
+</div>
+<br>
+<hr style="width : 75%;
+           size : 20;
+           color:#000000"/>
+<div class="container">
+    <h2> Stringency index </h2>
+    <br>
+    <form action="/" method="post">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="countries"> Country </label> 
+                <select class="custom-select d-block w-100" id="country" name="country" required>
+                    <option value="">Choose...</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Italy">Italy</option>
+                    <option value="France">France</option>
+                    <option value="Portugal">Portugal</option>                                      
+                </select>    
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="data"> Reference </label>
+                <select class="custom-select d-block w-100" id="reference" name="reference" required>
+                    <option value="">Choose...</option>
+                    <option value="time">Time</option>
+                    <option value="confirmed">Confirmed Cases</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit"> Show Graph </button>
+    </form>
+</div>
+<br>
+<hr style="width : 75%;
+           size : 20;
+           color:#000000"/>
+<div class="container">
+    <h2> Movility </h2>
+    <br>
+    <form action="/" method="post">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="countries"> Sectors </label> 
+                <select class="custom-select d-block w-100" id="sectors" name="sectors[]" multiple required>
+                    <option value="">Choose...</option>
+                    <option value="retail">Retail & Recreation</option>
+                    <option value="grocery">Grocery & Pharmacy</option>
+                    <option value="parks">Parks</option>
+                    <option value="transit">Transit Stations</option>
+                    <option value="workplaces">Workplaces</option>     
+                    <option value="residential">Residential</option>                                
+                </select>    
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="countries"> Country </label> 
+                <select class="custom-select d-block w-100" id="country_mov" name="country_mov" required>
+                    <option value="">Choose...</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Italy">Italy</option>
+                    <option value="France">France</option>
+                    <option value="Portugal">Portugal</option>                                      
+                </select>    
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit"> Show Graph </button>
+    </form>
+</div>
+<br>
+<hr style="width : 75%;
+           size : 20;
+           color:#000000"/>
+<div class="container">
+    <h2> Movility </h2>
+    <br>
+    <form action="/" method="post">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="countries"> prueba </label> 
+                <select class="custom-select d-block w-100" id="numbers" name="numbers[]" multiple required>
+                    <option value="">Choose...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>     
+                    <option value="6">6</option>                                
+                </select>    
+        <button class="btn btn-primary" type="submit"> Show Graph </button>
+    </form>
+</div>
+{% endblock %}
